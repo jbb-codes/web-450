@@ -1,7 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {
+  ReactiveFormsModule,
+  FormGroup,
+  FormBuilder,
+  Validators,
+} from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { environment } from '../../../environments/environment';
 import { CookieService } from 'ngx-cookie-service';
@@ -14,20 +19,31 @@ import { CookieService } from 'ngx-cookie-service';
     <div class="signin">
       <h1 class="signin__title">Sign In</h1>
 
-      @if(errorMessage) {
+      @if (errorMessage) {
         <div class="message message--error">{{ errorMessage }}</div>
       }
 
-      <form [formGroup]="signinForm" (ngSubmit)="signin();" class="signin__form">
+      <form [formGroup]="signinForm" (ngSubmit)="signin()" class="signin__form">
         <div class="signin__form-group">
           <label for="username" class="signin__label">Username</label>
-          <input id="username" formControlName="username" type="text" class="signin__input" />
+          <input
+            id="username"
+            formControlName="username"
+            type="text"
+            class="signin__input"
+          />
         </div>
         <div class="signin__form-group">
           <label for="password" class="signin__label">Password</label>
-          <input id="password" formControlName="password" type="password" class="signin__input" />
+          <input
+            id="password"
+            formControlName="password"
+            type="password"
+            class="signin__input"
+          />
         </div>
-        <input type="submit" class="signin__button" Value="Submit" />
+        <!-- Changed button value from "Submit" to "Sign In" to clearly communicate the form's purpose to the user. -->
+        <input type="submit" class="signin__button" value="Sign In" />
       </form>
       <a href="/" class="signin__return-link">Return to Home</a>
     </div>
@@ -98,17 +114,28 @@ import { CookieService } from 'ngx-cookie-service';
     .signin__return-link:hover {
       text-decoration: underline;
     }
-  `
+  `,
 })
 export class SigninComponent {
   errorMessage: string;
 
   signinForm: FormGroup = this.fb.group({
     username: [null, Validators.compose([Validators.required])],
-    password: [null, Validators.compose([Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}')])],
+    password: [
+      null,
+      Validators.compose([
+        Validators.required,
+        Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}'),
+      ]),
+    ],
   });
 
-  constructor(private http: HttpClient, private fb: FormBuilder, private router: Router, private cookieService: CookieService) {
+  constructor(
+    private http: HttpClient,
+    private fb: FormBuilder,
+    private router: Router,
+    private cookieService: CookieService,
+  ) {
     this.errorMessage = '';
   }
 
@@ -121,23 +148,25 @@ export class SigninComponent {
       return;
     }
 
-    this.http.post(`${environment.apiBaseUrl}/security/signin`, { username, password }).subscribe({
-      next: (response: any) => {
-        console.log('Signin Response', response);
+    this.http
+      .post(`${environment.apiBaseUrl}/security/signin`, { username, password })
+      .subscribe({
+        next: (response: any) => {
+          console.log('Signin Response', response);
 
-        const sessionUser = {
-          username: response.username,
-          role: response.role,
-        }
+          const sessionUser = {
+            username: response.username,
+            role: response.role,
+          };
 
-        this.cookieService.set('sessionUser', JSON.stringify(sessionUser));
+          this.cookieService.set('sessionUser', JSON.stringify(sessionUser));
 
-        this.router.navigate(['/']);
-      },
-      error: (error) => {
-        console.error('Signin Error', error);
-        this.errorMessage = 'Invalid username or password'
-      }
-    });
+          this.router.navigate(['/']);
+        },
+        error: (error) => {
+          console.error('Signin Error', error);
+          this.errorMessage = 'Invalid username or password';
+        },
+      });
   }
 }
