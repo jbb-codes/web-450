@@ -1,9 +1,12 @@
 # IDE extensions
 .vscode
-*/*/.vscode 
+*/*/.vscode
 .vscode/*
 .idea/*
 *.iml
+
+# tasklist
+*.xlsx
 
 # node
 node_module
