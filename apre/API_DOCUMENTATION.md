@@ -548,6 +548,69 @@ curl -X GET http://localhost:3000/api/reports/sales/regions/North
 
 ---
 
+### GET /reports/sales/categories
+
+**Description:** Fetches a list of distinct product categories from the sales collection.
+
+**URL:** `GET http://localhost:3000/api/reports/sales/categories`
+
+**Parameters:** None
+
+**Request Example:**
+
+```bash
+curl -X GET http://localhost:3000/api/reports/sales/categories
+```
+
+**Response (Status 200):**
+
+```json
+["Electronics", "Clothing", "Home & Garden", "Sports"]
+```
+
+**Error Response (Status 500):**
+
+- Database connection error
+
+---
+
+### GET /reports/sales/categories/:category
+
+**Description:** Fetches sales data for a specific product category, grouped by salesperson.
+
+**URL:** `GET http://localhost:3000/api/reports/sales/categories/:category`
+
+**Parameters:**
+
+- `category` (URL parameter) - The product category name (required)
+
+**Request Example:**
+
+```bash
+curl -X GET http://localhost:3000/api/reports/sales/categories/Electronics
+```
+
+**Response (Status 200):**
+
+```json
+[
+  {
+    "salesperson": "John Smith",
+    "totalSales": 5000
+  },
+  {
+    "salesperson": "Jane Doe",
+    "totalSales": 7500
+  }
+]
+```
+
+**Error Response (Status 500):**
+
+- Database connection error
+
+---
+
 ## Agent Performance Reports Endpoints
 
 ### GET /reports/agent-performance/call-duration-by-date-range

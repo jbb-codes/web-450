@@ -100,6 +100,7 @@ All authenticated routes require `authGuard` activation. Base path is `/` under 
 
 - `/reports/sales/sales-by-region` → `SalesByRegionComponent` - Regional sales comparison
 - `/reports/sales/sales-by-region-tabular` → `SalesByRegionTabularComponent` - Tabular sales data view
+- `/reports/sales/sales-by-category` → `SalesByCategoryComponent` - Sales by product category
 
 **Agent Performance** (`/reports/agent-performance`)
 
@@ -158,9 +159,12 @@ fetch("/api/security/signin", {
 
 #### Sales Report Endpoints
 
-| Method | Path                 | Query Parameters                    | Purpose                                               |
-| ------ | -------------------- | ----------------------------------- | ----------------------------------------------------- |
-| `GET`  | `/api/reports/sales` | `?region`, `?startDate`, `?endDate` | Retrieve sales data filtered by region and date range |
+| Method | Path                                      | Parameters        | Purpose                                                 |
+| ------ | ----------------------------------------- | ----------------- | ------------------------------------------------------- |
+| `GET`  | `/api/reports/sales/regions`              | None              | Retrieve list of distinct sales regions                 |
+| `GET`  | `/api/reports/sales/regions/:region`      | `:region` (URL)   | Retrieve sales data by region, grouped by salesperson   |
+| `GET`  | `/api/reports/sales/categories`           | None              | Retrieve list of distinct product categories            |
+| `GET`  | `/api/reports/sales/categories/:category` | `:category` (URL) | Retrieve sales data by category, grouped by salesperson |
 
 #### Agent Performance Endpoints
 
@@ -258,6 +262,7 @@ fetch("/api/security/signin", {
 - **Children:**
   - `SalesByRegionComponent` - Visual chart of sales by region
   - `SalesByRegionTabularComponent` - Table view of regional sales
+  - `SalesByCategoryComponent` - Bar chart of sales by product category
 
 #### `SalesByRegionComponent`
 
@@ -269,6 +274,19 @@ fetch("/api/security/signin", {
   - Chart visualization
   - Export option
 - **API Calls:** `GET /api/reports/sales?region=&startDate=&endDate=`
+
+#### `SalesByCategoryComponent`
+
+- **Path:** `src/app/reports/sales/sales-by-category/`
+- **Purpose:** Visualize sales performance across salespersons for a selected product category
+- **Features:**
+  - Category dropdown populated on component load
+  - Bar chart of total sales per salesperson for the selected category
+- **API Calls:**
+  - `GET /api/reports/sales/categories` — populates the category dropdown on init
+  - `GET /api/reports/sales/categories/:category` — fetches sales data on form submit
+
+---
 
 #### `AgentPerformanceComponent` (Parent)
 
