@@ -105,6 +105,7 @@ All authenticated routes require `authGuard` activation. Base path is `/` under 
 **Agent Performance** (`/reports/agent-performance`)
 
 - `/reports/agent-performance/call-duration-by-date-range` → `CallDurationByDateRangeComponent` - Filtered call duration analysis
+- `/reports/agent-performance/agent-performance-by-region` → `AgentPerformanceByRegionComponent` - Average call duration per agent by region
 
 **Customer Feedback** (`/reports/customer-feedback`)
 
@@ -168,9 +169,11 @@ fetch("/api/security/signin", {
 
 #### Agent Performance Endpoints
 
-| Method | Path                             | Query Parameters         | Purpose                                          |
-| ------ | -------------------------------- | ------------------------ | ------------------------------------------------ |
-| `GET`  | `/api/reports/agent-performance` | `?startDate`, `?endDate` | Retrieve agent call duration data for date range |
+| Method | Path                                                         | Parameters               | Purpose                                             |
+| ------ | ------------------------------------------------------------ | ------------------------ | --------------------------------------------------- |
+| `GET`  | `/api/reports/agent-performance/regions`                     | None                     | Retrieve list of distinct agent performance regions |
+| `GET`  | `/api/reports/agent-performance/regions/:region`             | `:region` (URL)          | Retrieve avg call duration per agent for a region   |
+| `GET`  | `/api/reports/agent-performance/call-duration-by-date-range` | `?startDate`, `?endDate` | Retrieve agent call duration data for date range    |
 
 #### Customer Feedback Endpoints
 
@@ -302,7 +305,18 @@ fetch("/api/security/signin", {
   - Call duration visualization
   - Agent listing (filtered by date range)
   - Identify outliers (too short/too long calls)
-- **API Calls:** `GET /api/reports/agent-performance?startDate=&endDate=`
+- **API Calls:** `GET /api/reports/agent-performance/call-duration-by-date-range?startDate=&endDate=`
+
+#### `AgentPerformanceByRegionComponent`
+
+- **Path:** `src/app/reports/agent-performance/agent-performance-by-region/`
+- **Purpose:** Visualize average call duration per agent for a selected region
+- **Features:**
+  - Region dropdown populated on component load
+  - Bar chart of average call duration per agent for the selected region
+- **API Calls:**
+  - `GET /api/reports/agent-performance/regions` — populates the region dropdown on init
+  - `GET /api/reports/agent-performance/regions/:region` — fetches agent data on form submit
 
 #### `CustomerFeedbackComponent` (Parent)
 

@@ -613,6 +613,69 @@ curl -X GET http://localhost:3000/api/reports/sales/categories/Electronics
 
 ## Agent Performance Reports Endpoints
 
+### GET /reports/agent-performance/regions
+
+**Description:** Returns a list of distinct regions from the agent performance collection.
+
+**URL:** `GET http://localhost:3000/api/reports/agent-performance/regions`
+
+**Parameters:** None
+
+**Request Example:**
+
+```bash
+curl -X GET http://localhost:3000/api/reports/agent-performance/regions
+```
+
+**Response (Status 200):**
+
+```json
+["North", "South", "East", "West"]
+```
+
+**Error Response (Status 500):**
+
+- Database connection error
+
+---
+
+### GET /reports/agent-performance/regions/:region
+
+**Description:** Returns average call duration per agent for the specified region, sorted by agent name.
+
+**URL:** `GET http://localhost:3000/api/reports/agent-performance/regions/:region`
+
+**Parameters:**
+
+- `region` (URL parameter) - The region name (required)
+
+**Request Example:**
+
+```bash
+curl -X GET http://localhost:3000/api/reports/agent-performance/regions/North
+```
+
+**Response (Status 200):**
+
+```json
+[
+  {
+    "agent": "Jane Doe",
+    "averageCallDuration": 312.5
+  },
+  {
+    "agent": "John Smith",
+    "averageCallDuration": 275.0
+  }
+]
+```
+
+**Error Response (Status 500):**
+
+- Database connection error
+
+---
+
 ### GET /reports/agent-performance/call-duration-by-date-range
 
 **Description:** Fetches call duration data for agents within a specified date range.
