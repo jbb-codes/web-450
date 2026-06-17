@@ -8,6 +8,8 @@
  * - Imported SalesByCategoryComponent from the new sales-by-category feature module.
  * - Added a 'sales-by-category' child route to salesReportRoutes so Angular can
  *   navigate to the new report view at /reports/sales/sales-by-category.
+ * - Imported AgentPerformanceByRegionComponent and added an 'agent-performance-by-region'
+ *   child route to agentPerformanceRoutes.
  */
 
 // Import the necessary modules
@@ -27,6 +29,7 @@ import { SalesByRegionComponent } from './reports/sales/sales-by-region/sales-by
 import { SalesComponent } from './reports/sales/sales.component';
 import { AgentPerformanceComponent } from './reports/agent-performance/agent-performance.component';
 import { CallDurationByDateRangeComponent } from './reports/agent-performance/call-duration-by-date-range/call-duration-by-date-range.component';
+import { AgentPerformanceByRegionComponent } from './reports/agent-performance/agent-performance-by-region/agent-performance-by-region.component';
 import { ChannelRatingByMonthComponent } from './reports/customer-feedback/channel-rating-by-month/channel-rating-by-month.component';
 import { CustomerFeedbackComponent } from './reports/customer-feedback/customer-feedback.component';
 import { SalesByRegionTabularComponent } from './reports/sales/sales-by-region-tabular/sales-by-region-tabular.component';
@@ -76,6 +79,10 @@ export const agentPerformanceRoutes: Routes = [
   {
     path: 'call-duration-by-date-range',
     component: CallDurationByDateRangeComponent,
+  },
+  {
+    path: 'agent-performance-by-region',
+    component: AgentPerformanceByRegionComponent,
   },
 ];
 

@@ -8,6 +8,8 @@
  * Changes:
  * - Added a 'Sales by Category' entry to the salesReports navigation array so
  *   the new report appears in the side menu alongside the existing sales reports.
+ * - Added an 'Agent Performance by Region' entry to the agentPerformanceReports
+ *   navigation array so the new report appears in the side menu.
  */
 import { Component } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
@@ -357,7 +359,10 @@ export class MainLayoutComponent {
       name: 'Call Duration by Date Range',
       url: '/reports/agent-performance/call-duration-by-date-range',
     },
-    // Add more reports as needed
+    {
+      name: 'Agent Performance by Region',
+      url: '/reports/agent-performance/agent-performance-by-region',
+    },
   ];
 
   customerFeedbackReports = [
