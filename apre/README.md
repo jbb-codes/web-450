@@ -32,12 +32,3 @@ ng serve
 
 - [API Documentation](API_DOCUMENTATION.md)
 - [UI Documentation](UI_DOCUMENTATION.md)
-
-## CI Pipeline
-
-Every push and pull request to `main` automatically runs two jobs in parallel:
-
-- **Server Tests** — runs Jest unit tests in `apre-server`
-- **Client Build and Tests** — builds the Angular app and runs Karma tests in `apre-client`
-
-Results are visible under the **Actions** tab on GitHub. A failing job blocks the workflow and indicates the branch is not ready to merge.
