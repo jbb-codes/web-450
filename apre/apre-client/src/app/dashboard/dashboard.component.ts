@@ -3,6 +3,10 @@
  * Date: 8/8/2024
  * File: dashboard.component.ts
  * Description: dashboard component for the MEAN Stack Application
+ *
+ * Summary (Minor Task 3): Each report card tracks its own loading state so a
+ *   spinner is visible from the moment the component initializes until the
+ *   data arrives, giving users clear feedback that a fetch is in progress.
  */
 
 import { Component, OnInit } from '@angular/core';
@@ -19,7 +23,7 @@ import { ChartComponent } from '../shared/chart/chart.component';
     <div class="dashboard">
       <div class="charts-container">
         <div class="card">
-          <!-- Show spinner while sales data is loading; swap to chart once data arrives -->
+          <!-- Defer chart until regional sales totals are fetched -->
           @if (loadingSalesData) {
             <div class="spinner"></div>
           } @else {
@@ -32,7 +36,7 @@ import { ChartComponent } from '../shared/chart/chart.component';
           }
         </div>
         <div class="card">
-          <!-- Show spinner while agent performance data is loading; swap to chart once data arrives -->
+          <!-- Defer chart until agent performance averages are fetched -->
           @if (loadingAgentPerformanceData) {
             <div class="spinner"></div>
           } @else {
@@ -47,7 +51,7 @@ import { ChartComponent } from '../shared/chart/chart.component';
       </div>
       <div class="charts-container">
         <div class="card">
-          <!-- Show spinner while customer feedback data is loading; swap to chart once data arrives -->
+          <!-- Defer chart until customer feedback scores are fetched -->
           @if (loadingCustomerFeedbackData) {
             <div class="spinner"></div>
           } @else {
@@ -60,7 +64,7 @@ import { ChartComponent } from '../shared/chart/chart.component';
           }
         </div>
         <div class="card">
-          <!-- Show spinner while report types data is loading; swap to chart once data arrives -->
+          <!-- Defer chart until report type counts are fetched -->
           @if (loadingReportTypesData) {
             <div class="spinner"></div>
           } @else {
@@ -74,7 +78,7 @@ import { ChartComponent } from '../shared/chart/chart.component';
         </div>
       </div>
       <div class="dashboard__table-container">
-        <!-- Show spinner while agent feedback data is loading; swap to table once data arrives -->
+        <!-- Defer table until agent feedback records are fetched -->
         @if (loadingAgentFeedbackData) {
           <div class="spinner"></div>
         } @else {
@@ -189,7 +193,7 @@ export class DashboardComponent implements OnInit {
       next: (data: any) => {
         this.salesData = data.map((d: any) => d.totalAmount);
         this.salesRegions = data.map((d: any) => d.region);
-        this.loadingSalesData = false; // Hide spinner once data has loaded
+        this.loadingSalesData = false; // Sales data received — chart can now display regional totals
       },
       error: () => {
         this.loadingSalesData = false; // Hide spinner on error so it does not hang indefinitely
@@ -206,7 +210,7 @@ export class DashboardComponent implements OnInit {
             (d: any) => d.averagePerformance,
           );
           this.agentNames = data.map((d: any) => d.name);
-          this.loadingAgentPerformanceData = false; // Hide spinner once data has loaded
+          this.loadingAgentPerformanceData = false; // Performance data received — chart can now display agent averages
         },
         error: () => {
           this.loadingAgentPerformanceData = false; // Hide spinner on error so it does not hang indefinitely
@@ -223,7 +227,7 @@ export class DashboardComponent implements OnInit {
           this.customerFeedbackData = data.map(
             (d: any) => d.averagePerformance,
           );
-          this.loadingCustomerFeedbackData = false; // Hide spinner once data has loaded
+          this.loadingCustomerFeedbackData = false; // Feedback scores received — chart can now display sentiment distribution
         },
         error: () => {
           this.loadingCustomerFeedbackData = false; // Hide spinner on error so it does not hang indefinitely
@@ -238,7 +242,7 @@ export class DashboardComponent implements OnInit {
         next: (data: any) => {
           this.reportTypes = data.reportTypes;
           this.reportCounts = data.reportCounts;
-          this.loadingReportTypesData = false; // Hide spinner once data has loaded
+          this.loadingReportTypesData = false; // Report counts received — chart can now display type breakdown
         },
         error: () => {
           this.loadingReportTypesData = false; // Hide spinner on error so it does not hang indefinitely
@@ -252,7 +256,7 @@ export class DashboardComponent implements OnInit {
       .subscribe({
         next: (data: any) => {
           this.tableData = data;
-          this.loadingAgentFeedbackData = false; // Hide spinner once data has loaded
+          this.loadingAgentFeedbackData = false; // Agent feedback received — table can now display call records
         },
         error: () => {
           this.loadingAgentFeedbackData = false; // Hide spinner on error so it does not hang indefinitely
