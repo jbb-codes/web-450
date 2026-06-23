@@ -15,3 +15,10 @@ node_module
 # macOS
 .DS_Store
 */.DS_Store
+
+# apre: screenshots, design assets, and documentation
+apre/minor-task*-screenshots/
+apre/prototype.png
+apre/sitemap.png
+apre/API_DOCUMENTATION.md
+apre/UI_DOCUMENTATION.md
