@@ -4,15 +4,6 @@
  *   component renders correctly, calls the expected load methods on initialization,
  *   and that each of the five loading flags initializes to true, is set to false
  *   on HTTP success, and is set to false on HTTP error so spinners never hang.
- *
- * Changes:
- * - Test 1: confirms loadReports is called during ngOnInit.
- * - Test 2: confirms loadReports delegates to loadSalesData.
- * - Test 3: confirms the agent feedback table renders rows when tableData is set;
- *   updated to set loadingAgentFeedbackData to false (required by the new
- *   @if/@else guard) and to query rows by data-testid instead of a CSS selector.
- * - Tests 4–8: confirm each of the five loading flags starts true so its
- *   spinner is visible before any HTTP response arrives.
  * - Tests 9–13: confirm each loading flag is cleared to false after a successful
  *   HTTP response so the chart or table renders in place of the spinner.
  * - Tests 14–18: confirm each loading flag is cleared to false when the HTTP

@@ -3,13 +3,6 @@
  * Date: 8/8/2024
  * File: app.routes.ts
  * Description: Application routes
- *
- * Changes:
- * - Imported SalesByCategoryComponent from the new sales-by-category feature module.
- * - Added a 'sales-by-category' child route to salesReportRoutes so Angular can
- *   navigate to the new report view at /reports/sales/sales-by-category.
- * - Imported AgentPerformanceByRegionComponent and added an 'agent-performance-by-region'
- *   child route to agentPerformanceRoutes.
  */
 
 // Import the necessary modules
@@ -33,7 +26,6 @@ import { AgentPerformanceByRegionComponent } from './reports/agent-performance/a
 import { ChannelRatingByMonthComponent } from './reports/customer-feedback/channel-rating-by-month/channel-rating-by-month.component';
 import { CustomerFeedbackComponent } from './reports/customer-feedback/customer-feedback.component';
 import { SalesByRegionTabularComponent } from './reports/sales/sales-by-region-tabular/sales-by-region-tabular.component';
-// New import: SalesByCategoryComponent added to support the Sales by Category report feature
 import { SalesByCategoryComponent } from './reports/sales/sales-by-category/sales-by-category.component';
 
 // Export user-management routes
@@ -67,7 +59,6 @@ export const salesReportRoutes: Routes = [
     path: 'sales-by-region-tabular',
     component: SalesByRegionTabularComponent,
   },
-  // New route: maps /reports/sales/sales-by-category to the SalesByCategoryComponent
   {
     path: 'sales-by-category',
     component: SalesByCategoryComponent,

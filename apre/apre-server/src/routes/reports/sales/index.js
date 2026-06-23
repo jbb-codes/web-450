@@ -3,12 +3,6 @@
  * Date: 8/14/24
  * File: index.js
  * Description: Apre sales report API for the sales reports
- *
- * Changes:
- * - Added GET /categories route to return a distinct list of product categories
- *   from the sales collection, used to populate the category dropdown on the client.
- * - Added GET /categories/:category route to aggregate total sales per salesperson
- *   for a given category, mirroring the existing /regions/:region pattern.
  */
 
 "use strict";

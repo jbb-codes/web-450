@@ -5,12 +5,6 @@
  * Description: Tests for the agent performance API, covering call duration by date
  * range and agent performance by region endpoints. Each test mocks the mongo utility
  * to isolate route logic from the database layer.
- *
- * Changes:
- * - Added tests for GET /regions to verify distinct region list is returned.
- * - Added tests for GET /regions/:region to verify per-agent average call duration
- *   aggregation and empty-result handling.
- * - Reorganized tests into nested describe blocks grouped by endpoint.
  */
 
 // Require the modules

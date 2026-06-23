@@ -5,22 +5,6 @@
  * Description: dashboard component for the MEAN Stack Application
  */
 
-/**
- * Changes:
- * - Added five independent boolean loading flags (loadingSalesData,
- *   loadingAgentPerformanceData, loadingCustomerFeedbackData,
- *   loadingReportTypesData, loadingAgentFeedbackData), each initialized to
- *   true so the spinner is visible before any HTTP response arrives.
- * - Updated each load method to set its flag to false in both the next and
- *   error callbacks so the spinner clears whether the request succeeds or fails.
- * - Wrapped each report card in an @if/@else block: the spinner renders while
- *   the flag is true, and the chart or table renders once the flag is false.
- * - Added data-testid="agent-feedback-table-row" to the table row element to
- *   support querying rows in unit tests without relying on CSS selectors.
- * - Removed two console.log statements from loadReportTypesData and
- *   loadAgentFeedbackData.
- */
-
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';

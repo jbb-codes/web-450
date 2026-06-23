@@ -1,16 +1,7 @@
 /**
  * File: agent-performance-by-region.component.ts
- * Description: New component for the Agent Performance by Region report. Displays a bar
- *   chart of average call duration per agent for a user-selected region. Fetches
- *   available regions on component initialization, then fetches and renders agent
- *   data when the user submits the form.
- *
- * Changes (new file):
- * - Created AgentPerformanceByRegionComponent as a standalone Angular component.
- * - On construction, calls GET /reports/agent-performance/regions to populate the
- *   region dropdown so users can select a region before submitting.
- * - onSubmit() calls GET /reports/agent-performance/regions/:region and maps the
- *   response into separate agentData and agents arrays for the chart.
+ * Description: Agent Performance by Region report component. Displays a bar chart
+ *   of average call duration per agent for a user-selected region.
  */
 import { Component, ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';

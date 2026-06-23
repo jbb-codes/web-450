@@ -1,10 +1,6 @@
 /**
  * File: call-duration-by-date-range.component.ts
  * Description: Renders a date-range form and bar chart for agent call duration data.
- *
- * Changes:
- * - Added data-testid and title tooltip to the submit button to improve testability
- *   and user discoverability.
  */
 import { Component } from '@angular/core';
 import { CalendarComponent } from '../../../shared/calendar/calendar.component';
@@ -162,7 +158,7 @@ export class CallDurationByDateRangeComponent {
             );
           },
           complete: () => {
-            this.showChart = true; // Show chart after fetching data
+            this.showChart = true;
           },
         });
     } else {

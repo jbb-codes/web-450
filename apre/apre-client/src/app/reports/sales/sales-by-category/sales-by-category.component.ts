@@ -1,16 +1,7 @@
 /**
  * File: sales-by-category.component.ts
- * Description: New component for the Sales by Category report. Displays a bar
- *   chart of total sales grouped by salesperson for a user-selected product
- *   category. Fetches available categories on component initialization, then
- *   fetches and renders sales data when the user submits the form.
- *
- * Changes (new file):
- * - Created SalesByCategoryComponent as a standalone Angular component.
- * - On construction, calls GET /reports/sales/categories to populate the
- *   category dropdown so users can select a category before submitting.
- * - onSubmit() calls GET /reports/sales/categories/:category and maps the
- *   response into separate totalSales and salesPeople arrays for the chart.
+ * Description: Sales by Category report component. Displays a bar chart of
+ *   total sales grouped by salesperson for a user-selected product category.
  */
 
 import { HttpClient } from '@angular/common/http';

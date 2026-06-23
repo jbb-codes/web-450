@@ -1,9 +1,6 @@
 /**
  * File: call-duration-by-date-range.component.spec.ts
  * Description: Unit tests for CallDurationByDateRangeComponent.
- *
- * Changes:
- * - Added test to verify the submit button has a title tooltip of "Click to fetch data."
  */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
@@ -15,7 +12,7 @@ describe('CallDurationByDateRangeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, CallDurationByDateRangeComponent], // Import CallDurationByDateRangeComponent
+      imports: [HttpClientTestingModule, CallDurationByDateRangeComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(CallDurationByDateRangeComponent);

@@ -3,12 +3,6 @@
  * Date: 10 September 2024
  * File: index.spec.js
  * Description: Test the sales report API
- *
- * Changes:
- * - Added a new describe block "Apre Sales Report API - Categories" containing
- *   three tests for the new /categories and /categories/:category endpoints:
- *   (1) fetching the distinct category list, (2) fetching sales by a specific
- *   category grouped by salesperson, and (3) handling an empty result set.
  */
 
 // Require the modules

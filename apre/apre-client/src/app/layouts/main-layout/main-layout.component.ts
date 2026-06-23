@@ -1,15 +1,8 @@
 /**
  * Author: Professor Krasso
- * Modified by: GitHub Copilot
  * Date: 8/8/2024
  * File: main-layout.component.ts
  * Description: Main layout of the MEAN Stack Application
- *
- * Changes:
- * - Added a 'Sales by Category' entry to the salesReports navigation array so
- *   the new report appears in the side menu alongside the existing sales reports.
- * - Added an 'Agent Performance by Region' entry to the agentPerformanceReports
- *   navigation array so the new report appears in the side menu.
  */
 import { Component } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
@@ -350,7 +343,6 @@ export class MainLayoutComponent {
       name: 'Sales by Region - Tabular',
       url: '/reports/sales/sales-by-region-tabular',
     },
-    // New entry: added to display the Sales by Category report link in the side menu
     { name: 'Sales by Category', url: '/reports/sales/sales-by-category' },
   ];
 
