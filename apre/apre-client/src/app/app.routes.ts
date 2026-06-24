@@ -1,8 +1,14 @@
 /**
  * Author: Professor Krasso
  * Date: 8/8/2024
+ * Modified: Jarren Bess, 6/24/2026
  * File: app.routes.ts
  * Description: Application routes
+ *
+ * Changes (Jarren Bess, 6/24/2026):
+ * - Added the feedback-by-channel route to customerFeedbackRoutes so the new
+ *   report is reachable within the existing customer feedback section without
+ *   disrupting any other routes.
  */
 
 // Import the necessary modules
@@ -25,6 +31,7 @@ import { CallDurationByDateRangeComponent } from './reports/agent-performance/ca
 import { AgentPerformanceByRegionComponent } from './reports/agent-performance/agent-performance-by-region/agent-performance-by-region.component';
 import { ChannelRatingByMonthComponent } from './reports/customer-feedback/channel-rating-by-month/channel-rating-by-month.component';
 import { CustomerFeedbackComponent } from './reports/customer-feedback/customer-feedback.component';
+import { FeedbackByChannelComponent } from './reports/customer-feedback/feedback-by-channel/feedback-by-channel.component';
 import { SalesByRegionTabularComponent } from './reports/sales/sales-by-region-tabular/sales-by-region-tabular.component';
 import { SalesByCategoryComponent } from './reports/sales/sales-by-category/sales-by-category.component';
 
@@ -82,6 +89,10 @@ export const customerFeedbackRoutes: Routes = [
   {
     path: 'channel-rating-by-month',
     component: ChannelRatingByMonthComponent,
+  },
+  {
+    path: 'feedback-by-channel',
+    component: FeedbackByChannelComponent,
   },
 ];
 
